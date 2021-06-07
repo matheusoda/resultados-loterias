@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+html,
+body {
+  font-family: Montserrat;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #6befa3;
+}
+
+select,
+option {
+  color: black;
+  font-size: 2rem;
+  border: none;
+  border-radius: 10%;
+  background: white;
+}
+
+.root {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 2%;
+  padding-bottom: 4%;
+}
+
+.barra-lateral-esquerda-sorteio {
+  background-color: #6befa3;
+  width: 23%;
+  padding-left: 5%;
+}
+
+.centro-sorteio {
+  width: 10%;
+  border-bottom-left-radius: 45% 70%;
+  border-top-left-radius: 45% 70%;
+  background-color: #eeeeee;
+}
+.barra-lateral-direita-sorteio {
+  background-color: #eeeeee;
+  width: 65%;
+  align-items: center;
+}
+
+.container-superior {
+  display: flex;
+  color: #000;
+}
+
+.container-centro {
+  margin: 0;
+  display: flex;
+}
+
+.container-inferior {
+}
+
+.titulo-sorteio {
+  margin: 0;
+  align-self: center;
+}
+
+.logo-sorteio {
+  opacity: 1;
+}
+
+.texto-inferio-informativo {
+  bottom: 5rem;
+  color: black;
+}
+
+.circulo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  background-color: white;
+  color: #000;
+  font-size: 2rem;
+  align-items: center;
+}
+
+.numero {
+  color: black;
+  margin-top: 4%;
+  margin-left: 25%;
+}
+
+.resultados {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+
+  flex-wrap: wrap;
+}
