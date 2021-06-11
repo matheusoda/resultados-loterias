@@ -16,7 +16,7 @@ function ContainerSuperior({setLoteria, loteria}) {
 
   return(
     <div className="container-superior" >
-      <select defaultValue={0} value={loteria} onChange={e =>setLoteria(e.target.value)}>
+      <select value={loteria} onChange={e =>setLoteria(e.target.value)}>
         {
         loterias.map((loteria) =>(
         <option key={loteria.id} value={[loteria.id, loteria.nome]}>{loteria.nome.toUpperCase()}</option>

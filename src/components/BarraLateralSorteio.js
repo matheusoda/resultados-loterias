@@ -6,21 +6,20 @@ import ContainerInferior from './ContainerInferior'
 
 import api from '../api';
 
-function BarraLateralSorteio({setProps, dataConcurso}) {
+function BarraLateralSorteio({setConcursoId,concursoId, dataConcurso}) {
   const [loteria, setLoteria] = useState(['0, mega-sena']);
   const [loteriasConcursos, setLoteriasConcursos] = useState([]);
-  const [concursoId, setConcursoId] = useState(2359);
   const [concursoName, setconcursoName] = useState("MEGA-SENA");
   
   useEffect(() => {
     loteriasConcursos.filter((e) => {
       if(String(e.loteriaId) === loteria[0]){
       setConcursoId(e.concursoId);
-      setconcursoName(loteria.split(",")[1].toUpperCase())
-      setProps(concursoId)
+      setconcursoName(loteria.split(",")[1].toUpperCase());
       }
+      return loteria
     }); 
-  }, [loteria])
+  }, [loteria, loteriasConcursos, setConcursoId])
 
   useEffect(() => {
     api.get("/loterias-concursos")

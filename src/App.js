@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import BarraLateralSorteio from './components/BarraLateralSorteio';
 import CentroSorteio from './components/CentroSorteio'
-import { format } from 'date-fns'
+import { format, parseISO } from 'date-fns'
 
 import api from './api';
 
 function App() {
-  const [dataConcurso, setDataConcurso]= useState('2021-06-04T21:17:53.787Z');
+  const [dataConcurso, setDataConcurso]= useState('');
   const [concursoId, setConcursoId] = useState(2359);
   const [concursos, setConcursos] = useState({});
-
-  const dataFormatada = format(dataConcurso, 'dd/MM/yyyy');
+  const [numeros, setNumeros] = useState([]);
+  const dataFormatada = dataConcurso ? format(parseISO(dataConcurso), 'dd/MM/yyyy') : '06/06/2021';
+  const numerosFomatados = numeros ? numeros : ['06, 09, 28, 33, 37, 40']
 
   useEffect(() => {
     api.get(`/concursos/${concursoId}`)
@@ -18,14 +19,22 @@ function App() {
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
      });
-    return setDataConcurso(concursos.data)
   },[concursoId]);
 
+  useEffect(() => {
+    if(concursos !== null) {
+      setDataConcurso(concursos.data)
+      setNumeros(concursos.numeros)
+    }
+  }, [concursos])
+
+  console.log("CONCURSO DATA",concursos.data)
+  console.log("CONCURSO",concursos)
   return(
     <div className="App">
-        <BarraLateralSorteio setProps={setConcursoId} dataConcurso={dataFormatada}/>
-        <div className="centro-sorteio"/>
-        <CentroSorteio concursos={concursos}/>
+      <BarraLateralSorteio setConcursoId={setConcursoId} concursoId={concursoId} dataConcurso={dataFormatada}/>
+      <div className="centro-sorteio"/>
+      <CentroSorteio numeros={numerosFomatados}/>
     </div>
   )
 }

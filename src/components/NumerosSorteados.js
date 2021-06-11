@@ -1,11 +1,12 @@
 import React from 'react';
 import '../index.css';
 
-function ContainerSuperior(props) {
+function ContainerSuperior({numero}) {
+  console.log("propsnumero", numero)
   return(
     <div className="circulo" >
       <p className="numero">
-        {props.numero}
+        {numero}
       </p>
     </div>
   )
